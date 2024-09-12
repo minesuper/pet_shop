@@ -10,5 +10,6 @@ namespace pet_shop.Classes
     public static class Navigation
     {
         public static Frame ActiveFrame { get; set; }
+
     }
 }

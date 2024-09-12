@@ -23,6 +23,33 @@ namespace pet_shop.Pages
         public NewProductList()
         {
             InitializeComponent();
+
+            ProductListView.ItemsSource = Models.pets_shopEntities.GetContext().Product.ToList();
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AscendingRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DescendingRadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

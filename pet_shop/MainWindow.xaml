@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         MinHeight="650"
         MinWidth="1000"
-        Title="Товары для животных" Height="650" Width="1000" WindowStartupLocation="CenterScreen">
+        Title="{Binding ElementName=MainFrame, Path=Content.Title}" Height="650" Width="1000" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>
