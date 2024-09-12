@@ -10,7 +10,13 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
         </Style>
-
+        <Style TargetType="ComboBox">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Width" Value="170"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+        </Style>
         <Style TargetType="TextBox">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
@@ -26,6 +32,15 @@
             <Setter Property="Height" Value="30"></Setter>
         </Style>
         <Style TargetType="Button">
+            <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Background" Value="{StaticResource HighlightBG}"></Setter>
+            <Setter Property="Height" Value="35"></Setter>
+        </Style>
+        <Style TargetType="RadioButton">
             <Setter Property="FontFamily" Value="Comic Sans MS"></Setter>
             <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
             <Setter Property="VerticalContentAlignment" Value="Center"></Setter>

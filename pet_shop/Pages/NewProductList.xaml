@@ -37,7 +37,6 @@
             <ComboBox x:Name="ComboBoxFactory" Width="140"
                       HorizontalAlignment="Right" VerticalAlignment="Center"
                       Margin="0,0,10,0">
-
             </ComboBox>
         </Grid>
 
@@ -75,15 +74,13 @@
                             <TextBlock Text="{Binding Facroties.FactoryName, 
                                 StringFormat={}Производитель: {0}}">
                             </TextBlock>
-                            <TextBlock Text="{Binding ProductCost, 
-                                StringFormat={}Цена: {0}}">
+                            <TextBlock Text="{Binding ProductCost, StringFormat={}Цена: {0}}">
                             </TextBlock>
                         </StackPanel>
 
-                        <TextBlock Grid.Column="2" Text="{Binding ProductCount}
-                            StringFormat={}Наличие на складе: {0}}"
-                                HorizontalAlignment="Center"
-                                   VerticalAlignment="Center">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                   Grid.Column="2" 
+                                   Text="{Binding ProductCount, StringFormat={}Наличие на складе: {0}}">
                         </TextBlock>
 
                         <Button Grid.Column="3" Content="Удалить"
@@ -95,8 +92,9 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button>
-            
+        <Button Grid.Row="3" Content="Назад" 
+                HorizontalAlignment="Right" VerticalAlignment="Center"
+                Margin="0 0 10 0">
         </Button>
         
     </Grid>

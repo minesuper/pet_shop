@@ -82,7 +82,7 @@ namespace pet_shop.Pages
 
         private void GuestButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Classes.Navigation.ActiveFrame.Navigate(new NewProductList());
         }
     }
 }

@@ -23,8 +23,14 @@ namespace pet_shop.Pages
         public NewProductList()
         {
             InitializeComponent();
+            try
+            {
+                //ProductListView.ItemsSource = Models.pets_shopEntities.GetContext().Product.ToList();
+            }
+            catch (Exception)
+            {
 
-            ProductListView.ItemsSource = Models.pets_shopEntities.GetContext().Product.ToList();
+            }
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
