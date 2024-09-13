@@ -50,9 +50,10 @@ namespace pet_shop.Pages
                     if (Models.pets_shopEntities.GetContext().User.Any(d => d.UserLogin == Login 
                     && d.UserPassword == Password))
                     {
-                        var role = Models.pets_shopEntities.GetContext().User.Where(d => d.UserLogin == Login
-                    && d.UserPassword == Password).FirstOrDefault().Role.RoleName;
-                        switch (role.ToString())
+                        var user = Models.pets_shopEntities.GetContext().User.Where(d => d.UserLogin == Login
+                    && d.UserPassword == Password).FirstOrDefault();
+                        Classes.Navigation.CurrentUser = user;
+                        switch (user.Role.ToString())
                         {
                             case "Администратор":
                                 Classes.Navigation.ActiveFrame.Navigate(new NewProductList());

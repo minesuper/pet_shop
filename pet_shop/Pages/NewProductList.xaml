@@ -17,25 +17,27 @@
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="Fio" x:Name="FioTextBlock"
+        <TextBlock Grid.Row="0" Text="Fio" x:Name="FioTextBlock" Visibility="Hidden" Margin="0 0 10 0"
                    HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Row="0" Text="0/0" x:Name="CountTextBlock" Margin="10 0 0 0"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
 
         <Grid Grid.Row="1">
-            <TextBox Width="150"  Margin="10,0,0,0" HorizontalAlignment="Left"
+            <TextBox Width="150" x:Name="SearchTextBox" Margin="10,0,0,0" HorizontalAlignment="Left"
             HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
                      TextChanged="TextBox_TextChanged"></TextBox>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <RadioButton Content="По возрастанию"
              x:Name="AscendingRadioButton" VerticalAlignment="Center"
-                         Checked="AscendingRadioButton_Checked"></RadioButton>
+                         Checked="AscendingRadioButton_Checked" Width="auto"></RadioButton>
 
                 <RadioButton Content="По убыванию" Margin="30 0 0 0"
              x:Name="DescendingRadioButton" VerticalAlignment="Center"
                          Checked="DescendingRadioButton_Checked"></RadioButton>
             </StackPanel>
             <ComboBox x:Name="ComboBoxFactory" Width="140"
-                      HorizontalAlignment="Right" VerticalAlignment="Center"
+                      HorizontalAlignment="Right" VerticalAlignment="Center" SelectionChanged="ComboBoxFactory_SelectionChanged"
                       Margin="0,0,10,0">
             </ComboBox>
         </Grid>
@@ -62,6 +64,7 @@
                         </Image>
 
                         <StackPanel Grid.Column="1"
+                                    Margin="10 0 0 0"
                                     VerticalAlignment="Center" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding Names.NamesProductNames, 
                                 StringFormat={}Наименование товара: {0}}"
@@ -92,7 +95,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Grid.Row="3" Content="Назад" 
+        <Button Grid.Row="3" Content="Назад" Click="Button_Click"
                 HorizontalAlignment="Right" VerticalAlignment="Center"
                 Margin="0 0 10 0">
         </Button>
