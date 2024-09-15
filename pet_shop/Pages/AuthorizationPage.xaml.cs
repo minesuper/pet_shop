@@ -65,6 +65,12 @@ namespace pet_shop.Pages
                     drawingContext.Pop();
                     x += 8;
                 }
+                for (int i = 0; i < 100; i++)
+                {
+                    double dotx = Random.Next(width);
+                    double doty = Random.Next(height);
+                    drawingContext.DrawEllipse(new SolidColorBrush(Color.FromRgb(128, 128, 128)), null, new Point(dotx, doty), 1.5, 1.5);
+                }
             }
             var bitmap = new RenderTargetBitmap(width, height, 96, 96, PixelFormats.Pbgra32);
             bitmap.Render(visual);

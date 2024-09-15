@@ -23,7 +23,6 @@ namespace pet_shop
         public MainWindow()
         {
             InitializeComponent();
-            Classes.ImageToByte.GetImageBytes();
             Classes.Navigation.ActiveFrame = MainFrame;
             Classes.Navigation.ActiveFrame.Navigate(new Pages.AuthorizationPage());
         }
