@@ -68,7 +68,7 @@
                                     VerticalAlignment="Center" HorizontalAlignment="Left">
                             <TextBlock Text="{Binding Names.NamesProductNames, 
                                 StringFormat={}Наименование товара: {0}}"
-                                       FontWeight="Bold">                                       
+                                       FontWeight="Bold">
                             </TextBlock>
                             <TextBlock Text="{Binding ProductDescription, 
                                 StringFormat={}Описание товара: {0}}"
@@ -89,8 +89,8 @@
                         <Button Grid.Column="3" Content="Удалить"
                                 x:Name="DeleteButton" Click="DeleteButton_Click">
                         </Button>
-                        
-                </Grid>
+
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
@@ -99,6 +99,6 @@
                 HorizontalAlignment="Right" VerticalAlignment="Center"
                 Margin="0 0 10 0">
         </Button>
-        
+
     </Grid>
 </Page>

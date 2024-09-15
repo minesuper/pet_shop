@@ -7,26 +7,76 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ИС - Товары для животных - авторизация">
+
     <Grid Background="white">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="20"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Label FontSize="16" Grid.Column="0" Grid.Row="0" Content="Логин:" VerticalAlignment="Center" HorizontalContentAlignment="Center"></Label>
-                <TextBox  FontSize="16" Grid.Column="1" Grid.Row="0" x:Name="LoginTextBox"></TextBox>
-                <Label  FontSize="16" Grid.Column="0" Grid.Row="2" Content="Пароль:" VerticalAlignment="Center" HorizontalContentAlignment="Center"></Label>
-                <PasswordBox  FontSize="16" Grid.Column="1" Grid.Row="2" x:Name="PasswordBox"></PasswordBox>
+                <Label FontSize="16" Grid.Column="0" Grid.Row="0" 
+                       Content="Логин:" VerticalAlignment="Center" 
+                       HorizontalContentAlignment="Center"/>
+                <TextBox FontSize="16" Grid.Column="1" Grid.Row="0" 
+                         x:Name="LoginTextBox"/>
+
+                <Label FontSize="16" Grid.Column="0" Grid.Row="2" 
+                       Content="Пароль:" VerticalAlignment="Center" 
+                       HorizontalContentAlignment="Center"/>
+                <PasswordBox FontSize="16" Grid.Column="1" Grid.Row="2" 
+                             x:Name="PasswordBox"/>
+
+                <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" 
+                      x:Name="CapthaGrid" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" 
+                           VerticalAlignment="Center" HorizontalAlignment="Center"
+                           x:Name="CaptchaImage" Width="120" Height="80"
+                           Margin="10"/>
+
+                    <Button Width="auto" Height="auto"
+                            Grid.ColumnSpan="3"
+                            Grid.Column="0" Grid.Row="1"
+                            HorizontalContentAlignment="Center"
+                            FontSize="14" x:Name="RegenerateCaptchaButton"
+                            Margin="10" Click="RegenerateCaptchaButton_Click"
+                            Content="Обновить каптчу"/>
+
+                    <Label Grid.Column="1" Grid.Row="2"
+                           FontSize="16" Content="Каптча:" 
+                           VerticalAlignment="Center"
+                           HorizontalContentAlignment="Center"
+                           x:Name="CaptchaLabel" Visibility="Visible"/>
+
+                    <TextBox Grid.Column="2" Grid.Row="2"
+                             FontSize="16" x:Name="CaptchaTextBox" 
+                             Visibility="Visible"/>
+                </Grid>
             </Grid>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 0">
-                <Button FontSize="16" x:Name="AuthButton" Margin="10" Click="AuthButton_Click" Content="Войти"></Button>
-                <Button  FontSize="16" x:Name="GuestButton" Margin="10" Click="GuestButton_Click" Content="Гость"></Button>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" 
+                        Margin="0 30 0 0">
+                <Button FontSize="16" x:Name="AuthButton" Margin="10" 
+                        Click="AuthButton_Click" Content="Войти"/>
+                <Button FontSize="16" x:Name="GuestButton" Margin="10" 
+                        Click="GuestButton_Click" Content="Гость"/>
             </StackPanel>
         </StackPanel>
     </Grid>

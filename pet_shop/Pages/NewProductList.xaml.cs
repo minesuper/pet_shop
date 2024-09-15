@@ -30,7 +30,7 @@ namespace pet_shop.Pages
         {
             ProductListView.ItemsSource = CurrentProductList;
             CountTextBlock.Text = $"{Models.pets_shopEntities.GetContext().Product.ToList().Count()} / {Models.pets_shopEntities.GetContext().Product.ToList().Count()}";
-            if(Classes.Navigation.CurrentUser != null)
+            if (Classes.Navigation.CurrentUser != null)
             {
                 FioTextBlock.Visibility = Visibility.Visible;
                 FioTextBlock.Text = $"{Classes.Navigation.CurrentUser.UserSurname}" +
@@ -39,7 +39,7 @@ namespace pet_shop.Pages
             }
             var FactoriesList = Models.pets_shopEntities.GetContext().Facroties.ToList();
             FactoriesList.Insert(0, new Models.Facroties() { FactoryName = "Все производители" });
-            ComboBoxFactory.ItemsSource = FactoriesList.Select(d=> d.FactoryName);
+            ComboBoxFactory.ItemsSource = FactoriesList.Select(d => d.FactoryName);
             ComboBoxFactory.SelectedIndex = 0;
         }
 
@@ -59,7 +59,8 @@ namespace pet_shop.Pages
                 {
                     CurrentProductList = CurrentProductList.OrderByDescending(d => d.ProductCost).ToList();
                 }
-                if (ComboBoxFactory.SelectedIndex != 0) { 
+                if (ComboBoxFactory.SelectedIndex != 0)
+                {
                     CurrentProductList = CurrentProductList.Where(d => d.Facroties.FactoryName == ComboBoxFactory.SelectedItem.ToString()).ToList();
                 }
                 ProductListView.ItemsSource = CurrentProductList;
@@ -84,7 +85,7 @@ namespace pet_shop.Pages
         {
             OnUpdate();
         }
-       
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
@@ -98,7 +99,7 @@ namespace pet_shop.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(Classes.Navigation.ActiveFrame.CanGoBack == true)
+            if (Classes.Navigation.ActiveFrame.CanGoBack == true)
             {
                 Classes.Navigation.ActiveFrame.GoBack();
                 Classes.Navigation.CurrentUser = null;
