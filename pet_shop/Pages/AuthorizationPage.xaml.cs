@@ -26,6 +26,8 @@ namespace pet_shop.Pages
         public AuthorizationPage()
         {
             InitializeComponent();
+            LoginTextBox.Text = "nokupekidda2001@gmail.com";
+            PasswordBox.Password = "JlFRCZ";
         }
 
         private void GenerateCaptcha()

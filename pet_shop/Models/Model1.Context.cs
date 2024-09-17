@@ -28,7 +28,7 @@ namespace pet_shop.Models
             }
             return _context;
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
@@ -47,7 +47,7 @@ namespace pet_shop.Models
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Statuses> Statuses { get; set; }
         public virtual DbSet<Streets> Streets { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Units> Units { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

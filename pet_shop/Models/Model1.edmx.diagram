@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="5d88c258a92347488849d5833ceda49a" Name="Diagram1">
-        <EntityTypeShape EntityType="pets_shopModel.Categories" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Cities" Width="1.5" PointX="1.5" PointY="22.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Facroties" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Importers" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Indexes" Width="1.5" PointX="1.5" PointY="24.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Names" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Order" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.OrderProduct" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Pickpoints" Width="1.5" PointX="0.75" PointY="15" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Role" Width="1.5" PointX="1.5" PointY="33.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Statuses" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.Streets" Width="1.5" PointX="1.5" PointY="26.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="pets_shopModel.User" Width="1.5" PointX="0.75" PointY="29.5" IsExpanded="true" />
+      <Diagram DiagramId="3dda76fe3d0b43d58bd8f97534e19bd0" Name="Diagram1">
+        <EntityTypeShape EntityType="pets_shopModel.Categories" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Cities" Width="1.5" PointX="1.5" PointY="24.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Facroties" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Importers" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Indexes" Width="1.5" PointX="1.5" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Names" Width="1.5" PointX="0.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Order" Width="1.5" PointX="3" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.OrderProduct" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Pickpoints" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Product" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Role" Width="1.5" PointX="1.5" PointY="35.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Statuses" Width="1.5" PointX="0.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Streets" Width="1.5" PointX="1.5" PointY="29.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.Units" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="pets_shopModel.User" Width="1.5" PointX="0.75" PointY="31.75" IsExpanded="true" />
         <AssociationConnector Association="pets_shopModel.FK_Product_Categories" ManuallyRouted="false" />
         <AssociationConnector Association="pets_shopModel.FK_Pickpoints_Cities" ManuallyRouted="false" />
         <AssociationConnector Association="pets_shopModel.FK_Product_Facroties" ManuallyRouted="false" />
@@ -32,6 +32,7 @@
         <AssociationConnector Association="pets_shopModel.FK_OrderProduct_Order" ManuallyRouted="false" />
         <AssociationConnector Association="pets_shopModel.FK_OrderProduct_Product" ManuallyRouted="false" />
         <AssociationConnector Association="pets_shopModel.FK_Pickpoints_Streets" ManuallyRouted="false" />
+        <AssociationConnector Association="pets_shopModel.FK_Product_Units" ManuallyRouted="false" />
         <AssociationConnector Association="pets_shopModel.FK_User_Role" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

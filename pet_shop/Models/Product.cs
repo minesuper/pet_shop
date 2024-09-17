@@ -21,6 +21,7 @@ namespace pet_shop.Models
         }
     
         public int ProductId { get; set; }
+        public int ProductUnitId { get; set; }
         public string ProductArticleNumber { get; set; }
         public int ProductNameId { get; set; }
         public decimal ProductCost { get; set; }
@@ -40,5 +41,6 @@ namespace pet_shop.Models
         public virtual Names Names { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderProduct> OrderProduct { get; set; }
+        public virtual Units Units { get; set; }
     }
 }

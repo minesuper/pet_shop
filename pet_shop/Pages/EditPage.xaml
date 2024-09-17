@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:pet_shop.Pages"
       mc:Ignorable="d" 
-      Height="650" Width="1000"
+      Height="450" Width="800"
       Background="White"
       Title="ИС - Товары для животных - редактирование продукта">
 
@@ -29,7 +29,7 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Label Style="{StaticResource LabelEditing}" Content="Id:" Grid.Column="0" Grid.Row="0"></Label>
+            <Label Style="{StaticResource LabelEditing}" x:Name="IdLabel" Visibility="Hidden" Content="Id:" Grid.Column="0" Grid.Row="0"></Label>
             <Label Style="{StaticResource LabelEditing}" Content="Категория:" Grid.Column="0" Grid.Row="1"></Label>
             <Label Style="{StaticResource LabelEditing}" Content="Количество на складе:" Grid.Column="0" Grid.Row="2"></Label>
             <Label Style="{StaticResource LabelEditing}" Content="Единица измерения:" Grid.Column="0" Grid.Row="3"></Label>
@@ -39,7 +39,7 @@
             <Label Style="{StaticResource LabelEditing}" Content="Поставщик:" Grid.Column="2" Grid.Row="2"></Label>
             <Label Style="{StaticResource LabelEditing}" Content="Подробное описание:" Grid.Column="2" Grid.Row="3"></Label>
 
-            <TextBox Grid.Column="1" Grid.Row="0" x:Name="IdTextBox"></TextBox>
+            <TextBox Grid.Column="1" Grid.Row="0" Visibility="Hidden" x:Name="IdTextBox" IsEnabled="False"></TextBox>
             <ComboBox Grid.Column="1" Grid.Row="1" x:Name="CategoryComboBox" DisplayMemberPath="CategoryName"></ComboBox>
             <TextBox Grid.Column="1" Grid.Row="2" x:Name="CounityTextBox"></TextBox>
             <TextBox Grid.Column="1" Grid.Row="3" x:Name="UnitTextBox"></TextBox>
@@ -55,7 +55,8 @@
             <TextBox Grid.Column="3" Grid.Row="0" x:Name="NameTextBox"></TextBox>
             <TextBox Grid.Column="3" Grid.Row="1" x:Name="PriceTextBox"></TextBox>
             <TextBox Grid.Column="3" Grid.Row="2" x:Name="SupplierTextBox"></TextBox>
-            <TextBox Grid.Column="3" Grid.Row="3" x:Name="DescriptionTextBox" Grid.RowSpan="2" Height="auto" 
+            <TextBox Grid.Column="3" Grid.Row="3" x:Name="DescriptionTextBox" Grid.RowSpan="2"
+                     Height="auto" VerticalContentAlignment="Top" HorizontalContentAlignment="Left"
                      VerticalScrollBarVisibility="Visible" TextWrapping="Wrap"></TextBox>
         </Grid>
         <Button Margin="10 0 0 0" Grid.Row="1" Content="Назад"

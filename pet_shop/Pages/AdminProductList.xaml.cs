@@ -99,7 +99,7 @@ namespace pet_shop.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Classes.Navigation.ActiveFrame.Navigate(new Pages.EditPage((sender as Button).DataContext as Models.Product));
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -113,7 +113,7 @@ namespace pet_shop.Pages
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Classes.Navigation.ActiveFrame.Navigate(new Pages.EditPage(null));
         }
     }
 }
