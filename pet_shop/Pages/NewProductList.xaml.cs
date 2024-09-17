@@ -86,18 +86,12 @@ namespace pet_shop.Pages
             OnUpdate();
         }
 
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ComboBoxFactory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             OnUpdate();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (Classes.Navigation.ActiveFrame.CanGoBack == true)
             {

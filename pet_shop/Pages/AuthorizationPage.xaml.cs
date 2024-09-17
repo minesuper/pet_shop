@@ -109,7 +109,7 @@ namespace pet_shop.Pages
                             switch (user.Role.RoleName.ToString())
                             {
                                 case "Администратор":
-                                    Classes.Navigation.ActiveFrame.Navigate(new NewProductList());
+                                    Classes.Navigation.ActiveFrame.Navigate(new AdminProductList());
                                     MessageBox.Show("Успех!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
                                     AuthButtonClickCount = 0;
                                     if (CapthaGrid.Visibility != Visibility.Collapsed)

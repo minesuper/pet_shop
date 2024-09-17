@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:pet_shop"
         mc:Ignorable="d"
         MinHeight="650"
-        MinWidth="1000"
-        Title="{Binding ElementName=MainFrame, Path=Content.Title}" Height="650" Width="1000" WindowStartupLocation="CenterScreen">
+        MinWidth="1050"
+        Title="{Binding ElementName=MainFrame, Path=Content.Title}" Height="650" Width="1050" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="70"/>

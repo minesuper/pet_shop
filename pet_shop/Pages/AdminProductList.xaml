@@ -1,0 +1,116 @@
+﻿<Page x:Class="pet_shop.Pages.AdminProductList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:pet_shop.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ИС - Товары для животных - кабинет Администратора">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Fio" x:Name="FioTextBlock" Visibility="Hidden" Margin="0 0 10 0"
+                   HorizontalAlignment="Right" VerticalAlignment="Center"></TextBlock>
+        <TextBlock Grid.Row="0" Text="0/0" x:Name="CountTextBlock" Margin="10 0 0 0"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+
+        <Grid Grid.Row="1">
+            <TextBox Width="150" x:Name="SearchTextBox" Margin="10,0,0,0" HorizontalAlignment="Left"
+            HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                     TextChanged="TextBox_TextChanged"></TextBox>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <RadioButton Content="По возрастанию"
+             x:Name="AscendingRadioButton" VerticalAlignment="Center"
+                         Checked="AscendingRadioButton_Checked" Width="auto"></RadioButton>
+
+                <RadioButton Content="По убыванию" Margin="30 0 0 0"
+             x:Name="DescendingRadioButton" VerticalAlignment="Center"
+                         Checked="DescendingRadioButton_Checked"></RadioButton>
+            </StackPanel>
+            <ComboBox x:Name="ComboBoxFactory" Width="140"
+                      HorizontalAlignment="Right" VerticalAlignment="Center" SelectionChanged="ComboBoxFactory_SelectionChanged"
+                      Margin="0,0,10,0">
+            </ComboBox>
+        </Grid>
+
+        <ListView Grid.Row="2" x:Name="ProductListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="400"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                            <ColumnDefinition Width="150"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0">
+                            <Image.Source>
+                                <Binding Path="ProductImage">
+                                    <Binding.TargetNullValue>
+                                        <BitmapImage UriSource="/Resources/picture.png"></BitmapImage>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="10 0 0 0"
+                                    VerticalAlignment="Center" HorizontalAlignment="Left">
+                            <TextBlock Text="{Binding Names.NamesProductNames, 
+                                StringFormat={}Наименование товара: {0}}"
+                                       FontWeight="Bold">
+                            </TextBlock>
+                            <TextBlock Text="{Binding ProductDescription, 
+                                StringFormat={}Описание товара: {0}}"
+                                       TextWrapping="Wrap">
+                            </TextBlock>
+                            <TextBlock Text="{Binding Facroties.FactoryName, 
+                                StringFormat={}Производитель: {0}}">
+                            </TextBlock>
+                            <TextBlock Text="{Binding ProductCost, StringFormat={}Цена: {0}}">
+                            </TextBlock>
+                        </StackPanel>
+
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                   Grid.Column="2" 
+                                   Text="{Binding ProductCount, StringFormat={}Наличие на складе: {0}}">
+                        </TextBlock>
+
+                        <Button Grid.Column="3" Content="Изменить"
+                                Margin="10"
+                                x:Name="EditButton" Click="EditButton_Click">
+                        </Button>
+
+                        <Button Grid.Column="4" Content="Удалить"
+                                Margin="10"
+                                x:Name="DeleteButton" Click="DeleteButton_Click">
+                        </Button>
+
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="3" x:Name="BackButton" Content="Назад" Click="BackButton_Click"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="10 0 0 0">
+        </Button>
+        
+        <Button Grid.Row="3" Content="Добавить" x:Name="AddButton" Click="AddButton_Click"
+                HorizontalAlignment="Right" VerticalAlignment="Center"
+                Margin="0 0 10 0">
+        </Button>
+
+    </Grid>
+</Page>

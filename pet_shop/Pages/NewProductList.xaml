@@ -86,18 +86,14 @@
                                    Text="{Binding ProductCount, StringFormat={}Наличие на складе: {0}}">
                         </TextBlock>
 
-                        <Button Grid.Column="3" Content="Удалить"
-                                x:Name="DeleteButton" Click="DeleteButton_Click">
-                        </Button>
-
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Grid.Row="3" Content="Назад" Click="Button_Click"
-                HorizontalAlignment="Right" VerticalAlignment="Center"
-                Margin="0 0 10 0">
+        <Button Grid.Row="3" Content="Назад" Click="BackButton_Click" x:Name="BackButton"
+                HorizontalAlignment="Left" VerticalAlignment="Center"
+                Margin="10 0 0 0">
         </Button>
 
     </Grid>
