@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -55,7 +57,7 @@ namespace pet_shop.Pages
             {
                 IdLabel.Visibility = Visibility.Visible;
                 IdTextBox.Visibility = Visibility.Visible;
-                IdTextBox.Text = Models.pets_shopEntities.GetContext().Product.Max(d => d.ProductId+1).ToString();
+                IdTextBox.Text = Models.pets_shopEntities.GetContext().Product.Max(d => d.ProductId + 1).ToString();
                 CategoryComboBox.SelectedItem = Models.pets_shopEntities.GetContext().Categories.Where(d => d.CategoryId == _currentProduct.ProductCategoryId).FirstOrDefault();
                 CategoryComboBox.ItemsSource = Models.pets_shopEntities.GetContext().Categories.ToList();
                 CounityTextBox.Text = _currentProduct.ProductCount.ToString();
@@ -77,7 +79,93 @@ namespace pet_shop.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                StringBuilder errors = new StringBuilder();
+                if (string.IsNullOrEmpty(CategoryComboBox.Text))
+                {
+                    errors.AppendLine("Выберите категорию!");
+                }
+                if (string.IsNullOrEmpty(CounityTextBox.Text))
+                {
+                    errors.AppendLine("Заполните количество!");
+                    var countity = Int32.TryParse(CounityTextBox.Text, out var res);
+                    if (!countity)
+                    {
+                        errors.AppendLine("Неправильно заполнено поле с количеством!");
+                    }
+                    else
+                    {
+                        if (res < 0)
+                        {
+                            errors.AppendLine("Измените количество на другое число!");
+                        }
+                    }
+                }
+                if (string.IsNullOrEmpty(UnitTextBox.Text))
+                {
+                    errors.AppendLine("Заполните единицу измерения!");
+                }
+                if (string.IsNullOrEmpty(NameTextBox.Text))
+                {
+                    errors.AppendLine("Заполните название!");
+                }
+                if (string.IsNullOrEmpty(PriceTextBox.Text))
+                {
+                    errors.AppendLine("Заполните стоимость!");
+                    var price = Decimal.TryParse(PriceTextBox.Text, out var res);
+                    if (price)
+                    {
+                        if (res < 0)
+                        {
+                            errors.AppendLine("Измените стоимость на другое число!");
+                        }
+                        else
+                        {
+                            if (PriceTextBox.Text.Split(',')[1].Length > 2)
+                            {
+                                errors.AppendLine("Измените стоимость на другое число!");
+                            }
+                        }
+                    }
+                }
+                if (string.IsNullOrEmpty(SupplierTextBox.Text))
+                {
+                    errors.AppendLine("Заполните поставщика!");
+                }
+                if (string.IsNullOrEmpty(DescriptionTextBox.Text))
+                {
+                    errors.AppendLine("Заполните описание!");
+                }
 
+                if (errors.Length > 0)
+                {
+                    System.Windows.MessageBox.Show(errors.ToString(), "Ошибка!",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    //SAVE
+                }
+
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ImageImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "Выберите изображение";
+            dialog.Filter = "Изображения (*.jpeg;*.jpg;*.png) | *.jpeg;*.jpg;*.png";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                _currentProduct.NameOfImage = dialog.FileName.Split('\\').Last();
+                _currentProduct.ProductImage = File.ReadAllBytes(dialog.FileName);
+                ImageImage.Source = new BitmapImage(new Uri(dialog.FileName));
+            }
         }
     }
 }
