@@ -9,7 +9,7 @@
       Background="White"
       Title="ИС - Товары для животных - редактирование продукта">
 
-    <Grid>
+    <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="60"></RowDefinition>

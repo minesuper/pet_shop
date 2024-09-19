@@ -89,6 +89,9 @@ namespace pet_shop.Pages
                 if (string.IsNullOrEmpty(CounityTextBox.Text))
                 {
                     errors.AppendLine("Заполните количество!");
+                }
+                else
+                {
                     var countity = Int32.TryParse(CounityTextBox.Text, out var res);
                     if (!countity)
                     {
@@ -98,7 +101,7 @@ namespace pet_shop.Pages
                     {
                         if (res < 0)
                         {
-                            errors.AppendLine("Измените количество на другое число!");
+                            errors.AppendLine("Количество - отрицательное число!");
                         }
                     }
                 }
@@ -113,20 +116,27 @@ namespace pet_shop.Pages
                 if (string.IsNullOrEmpty(PriceTextBox.Text))
                 {
                     errors.AppendLine("Заполните стоимость!");
+                }
+                else
+                {
                     var price = Decimal.TryParse(PriceTextBox.Text, out var res);
                     if (price)
                     {
                         if (res < 0)
                         {
-                            errors.AppendLine("Измените стоимость на другое число!");
+                            errors.AppendLine("Стоимость отрицательная!");
                         }
                         else
                         {
                             if (PriceTextBox.Text.Split(',')[1].Length > 2)
                             {
-                                errors.AppendLine("Измените стоимость на другое число!");
+                                errors.AppendLine("У стоимости число знаков после запятой больше двух!");
                             }
                         }
+                    }
+                    else
+                    {
+                        errors.AppendLine("Стоимость - не число!");
                     }
                 }
                 if (string.IsNullOrEmpty(SupplierTextBox.Text))
@@ -142,10 +152,7 @@ namespace pet_shop.Pages
                 {
                     System.Windows.MessageBox.Show(errors.ToString(), "Ошибка!",
                         MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else
-                {
-                    //SAVE
+                    return;
                 }
 
             }
@@ -157,6 +164,7 @@ namespace pet_shop.Pages
 
         private void ImageImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            // ПРОВЕРКУ НА 300X200
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Выберите изображение";
             dialog.Filter = "Изображения (*.jpeg;*.jpg;*.png) | *.jpeg;*.jpg;*.png";
