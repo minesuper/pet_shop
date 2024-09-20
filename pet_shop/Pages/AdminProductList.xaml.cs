@@ -26,7 +26,7 @@ namespace pet_shop.Pages
             InitializeComponent();
             OnStart();
         }
-        private void OnStart()
+        public void OnStart()
         {
             ProductListView.ItemsSource = CurrentProductList;
             CountTextBlock.Text = $"{Models.pets_shopEntities.GetContext().Product.ToList().Count()} / {Models.pets_shopEntities.GetContext().Product.ToList().Count()}";
@@ -43,7 +43,7 @@ namespace pet_shop.Pages
             ComboBoxFactory.SelectedIndex = 0;
         }
 
-        private void OnUpdate()
+        public void OnUpdate()
         {
             try
             {
@@ -89,7 +89,10 @@ namespace pet_shop.Pages
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var _context = (sender as Button).DataContext as Models.Product;
+            Models.pets_shopEntities.GetContext().Product.Remove(_context);
+            Models.pets_shopEntities.GetContext().SaveChanges();
+            OnUpdate();
         }
 
         private void ComboBoxFactory_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -128,7 +128,7 @@ namespace pet_shop.Pages
                         }
                         else
                         {
-                            if (PriceTextBox.Text.Split(',')[1].Length > 2)
+                            if (PriceTextBox.Text.Split(',').Last().Length > 2)
                             {
                                 errors.AppendLine("У стоимости число знаков после запятой больше двух!");
                             }
@@ -154,26 +154,97 @@ namespace pet_shop.Pages
                         MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
+                var selectedCategory = CategoryComboBox.SelectedItem as Models.Categories;
+                _currentProduct.ProductCategoryId = Models.pets_shopEntities.GetContext().Categories.
+                    Where(d => d.CategoryName == selectedCategory.CategoryName).FirstOrDefault().CategoryId;
+                _currentProduct.ProductCost = Convert.ToDecimal(PriceTextBox.Text);
+                _currentProduct.ProductCount = Convert.ToInt32(CounityTextBox.Text);
+                _currentProduct.ProductDescription = DescriptionTextBox.Text;
+                var name = Models.pets_shopEntities.GetContext().Names.
+                    Where(d => d.NamesProductNames == NameTextBox.Text).
+                    FirstOrDefault();
+                if (name != null)
+                {
+                    _currentProduct.ProductNameId = name.NamesId;
+                }
+                else
+                {
+                    Models.Names new_name = new Models.Names() { NamesProductNames = NameTextBox.Text };
+                    Models.pets_shopEntities.GetContext().Names.Add(new_name);
+                    Models.pets_shopEntities.GetContext().SaveChanges();
+                    _currentProduct.ProductNameId = new_name.NamesId;
+                }
+                var units = Models.pets_shopEntities.GetContext().Units.
+                Where(d => d.UnitName == UnitTextBox.Text).
+                FirstOrDefault();
+                if (units != null)
+                {
+                    _currentProduct.ProductUnitId = units.id;
+                }
+                else
+                {
+                    Models.Units new_unit = new Models.Units() { UnitName = UnitTextBox.Text };
+                    Models.pets_shopEntities.GetContext().Units.Add(new_unit);
+                    Models.pets_shopEntities.GetContext().SaveChanges();
+                    _currentProduct.ProductUnitId = new_unit.id;
+                }
 
+                var suplliers = Models.pets_shopEntities.GetContext().Importers.
+                Where(d => d.ImportersName == SupplierTextBox.Text).
+                FirstOrDefault();
+                if (suplliers != null)
+                {
+                    _currentProduct.ProductImporterId = suplliers.ImportersId;
+                }
+                else
+                {
+                    Models.Importers new_supplier = new Models.Importers() { ImportersName = SupplierTextBox.Text };
+                    Models.pets_shopEntities.GetContext().Importers.Add(new_supplier);
+                    Models.pets_shopEntities.GetContext().SaveChanges();
+                    _currentProduct.ProductImporterId = new_supplier.ImportersId;
+                }
+
+                if (isAdding)
+                {
+                    _currentProduct.ProductSale = 0;
+                    _currentProduct.ProductSaleMax = 0;
+                    _currentProduct.ProductFactoryId = 1;
+                    _currentProduct.ProductArticleNumber = string.Empty;
+                    Models.pets_shopEntities.GetContext().Product.Add(_currentProduct);
+                }
+                Models.pets_shopEntities.GetContext().SaveChanges();
+                System.Windows.MessageBox.Show("Данные добавлены!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+                
             }
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show(ex.ToString(), "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        private void ImageImage_MouseDown(object sender, MouseButtonEventArgs e)
+        private string GetImageFromFile()
         {
-            // ПРОВЕРКУ НА 300X200
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Title = "Выберите изображение";
             dialog.Filter = "Изображения (*.jpeg;*.jpg;*.png) | *.jpeg;*.jpg;*.png";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                _currentProduct.NameOfImage = dialog.FileName.Split('\\').Last();
-                _currentProduct.ProductImage = File.ReadAllBytes(dialog.FileName);
-                ImageImage.Source = new BitmapImage(new Uri(dialog.FileName));
+                return dialog.FileName;
             }
+            return string.Empty;
+        }
+        private void ImageImage_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            string path = GetImageFromFile();
+            BitmapImage img = new BitmapImage(new Uri(path));
+            while (img.Width > 300 && img.Height > 200)
+            {
+                System.Windows.MessageBox.Show("Размер должен быть 300x200", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                path = GetImageFromFile();
+                img = new BitmapImage(new Uri(path));
+            }
+            _currentProduct.NameOfImage = path.Split('\\').Last();
+            _currentProduct.ProductImage = File.ReadAllBytes(path);
+            ImageImage.Source = img;
         }
     }
 }
