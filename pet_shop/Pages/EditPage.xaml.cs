@@ -211,9 +211,17 @@ namespace pet_shop.Pages
                     _currentProduct.ProductFactoryId = 1;
                     _currentProduct.ProductArticleNumber = string.Empty;
                     Models.pets_shopEntities.GetContext().Product.Add(_currentProduct);
+                    Models.pets_shopEntities.GetContext().SaveChanges();
+                    System.Windows.MessageBox.Show("Данные добавлены!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                Models.pets_shopEntities.GetContext().SaveChanges();
-                System.Windows.MessageBox.Show("Данные добавлены!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                {
+                    Models.pets_shopEntities.GetContext().SaveChanges();
+                    System.Windows.MessageBox.Show("Данные изменены!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                Classes.Navigation.ActiveFrame.RemoveBackEntry();
+                Classes.Navigation.ActiveFrame.Navigate(new Pages.AdminProductList());
+                
                 
             }
             catch (Exception ex)
@@ -235,12 +243,15 @@ namespace pet_shop.Pages
         private void ImageImage_MouseDown(object sender, MouseButtonEventArgs e)
         {
             string path = GetImageFromFile();
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
             BitmapImage img = new BitmapImage(new Uri(path));
-            while (img.Width > 300 && img.Height > 200)
+            if (img.PixelWidth > 300 || img.PixelHeight > 200)
             {
                 System.Windows.MessageBox.Show("Размер должен быть 300x200", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                path = GetImageFromFile();
-                img = new BitmapImage(new Uri(path));
+                return;
             }
             _currentProduct.NameOfImage = path.Split('\\').Last();
             _currentProduct.ProductImage = File.ReadAllBytes(path);

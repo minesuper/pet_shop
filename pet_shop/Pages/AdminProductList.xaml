@@ -9,7 +9,7 @@
       Title="ИС - Товары для животных - кабинет Администратора">
 
 
-    <Grid>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
@@ -54,7 +54,7 @@
                             <ColumnDefinition Width="150"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0">
+                        <Image Grid.Column="0" Margin="10">
                             <Image.Source>
                                 <Binding Path="ProductImage">
                                     <Binding.TargetNullValue>
@@ -100,6 +100,17 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ProductCount}" Value="0">
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            
         </ListView>
 
         <Button Grid.Row="3" x:Name="BackButton" Content="Назад" Click="BackButton_Click"

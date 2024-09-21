@@ -41,6 +41,7 @@ namespace pet_shop.Pages
             FactoriesList.Insert(0, new Models.Facroties() { FactoryName = "Все производители" });
             ComboBoxFactory.ItemsSource = FactoriesList.Select(d => d.FactoryName);
             ComboBoxFactory.SelectedIndex = 0;
+            OnUpdate();
         }
 
         public void OnUpdate()
@@ -109,7 +110,7 @@ namespace pet_shop.Pages
         {
             if (Classes.Navigation.ActiveFrame.CanGoBack == true)
             {
-                Classes.Navigation.ActiveFrame.GoBack();
+                Classes.Navigation.ActiveFrame.Navigate(new Pages.AuthorizationPage());
                 Classes.Navigation.CurrentUser = null;
             }
         }

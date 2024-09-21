@@ -53,7 +53,7 @@
                             <ColumnDefinition Width="150"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Image Grid.Column="0">
+                        <Image Grid.Column="0" Margin="10">
                             <Image.Source>
                                 <Binding Path="ProductImage">
                                     <Binding.TargetNullValue>
@@ -89,6 +89,17 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ProductCount}" Value="0">
+                            <Setter Property="Background" Value="Gray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            
         </ListView>
 
         <Button Grid.Row="3" Content="Назад" Click="BackButton_Click" x:Name="BackButton"
