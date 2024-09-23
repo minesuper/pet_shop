@@ -91,9 +91,19 @@ namespace pet_shop.Pages
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             var _context = (sender as Button).DataContext as Models.Product;
-            Models.pets_shopEntities.GetContext().Product.Remove(_context);
-            Models.pets_shopEntities.GetContext().SaveChanges();
-            OnUpdate();
+            if (Models.pets_shopEntities.GetContext().OrderProduct.Where(d => d.OpProductId == _context.ProductId).Count() == 0)
+            {
+                Models.pets_shopEntities.GetContext().Product.Remove(_context);
+                Models.pets_shopEntities.GetContext().SaveChanges();
+                OnUpdate();
+                System.Windows.MessageBox.Show("Товар удален!", "Успех!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Товар находится в корзине!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            
         }
 
         private void ComboBoxFactory_SelectionChanged(object sender, SelectionChangedEventArgs e)
