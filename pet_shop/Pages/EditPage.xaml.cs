@@ -128,9 +128,13 @@ namespace pet_shop.Pages
                         }
                         else
                         {
-                            if (PriceTextBox.Text.Split(',').Last().Length > 2)
+                            string[] splitted = PriceTextBox.Text.Split(',');
+                            if (splitted.Length > 1)
                             {
-                                errors.AppendLine("У стоимости число знаков после запятой больше двух!");
+                                if (splitted.Last().Length > 2)
+                                {
+                                    errors.AppendLine("У стоимости число знаков после запятой больше двух!");
+                                }
                             }
                         }
                     }
