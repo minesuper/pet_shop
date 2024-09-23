@@ -19,26 +19,7 @@ namespace pet_shop.Pages
     /// <summary>
     /// Логика взаимодействия для NewProductList.xaml
     /// </summary>
-    //public class StaffNameToBackgroundColourConverter : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        var count = (Models.Product)value;
-    //        if (count.ProductCount == 0)
-    //        {
-    //            return new SolidColorBrush(Colors.Gray);
-    //        }
-    //        else
-    //        {
-    //            return new SolidColorBrush(Colors.White);
-    //        }
-    //    }
 
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        return value;
-    //    }
-    //}
     public partial class NewProductList : Page
     {
         List<Models.Product> CurrentProductList { get; set; } = Models.pets_shopEntities.GetContext().Product.ToList();
